@@ -1,0 +1,107 @@
+//  <!DOCTYPE html>
+// <html lang="en">
+
+// <head>
+//     <title>Atm homepage</title>
+//     <meta charset="utf-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1">
+//     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+//     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+//     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+//     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+//     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+// </head>
+
+// <body>
+// <div id="login-area" class="mt-5">
+//         <h1 class="text-center">Code Bank</h1>
+//         <div id="login-box" class="container rounded p-5 shadow mt-5">
+//             <h3>Login</h3>
+//             <input type="text" class="form-control" placeholder="Email">
+//             <br>
+//             <input type="text" class="form-control" placeholder="password">
+//             <br>
+//             <button id="submit-btn" class="btn btn-success">Submit</button>
+//         </div>
+//     </div>
+
+//     <div id="dashboard" class="d-none mt-5 container">
+//         <div class="d-flex justify-content-center">
+//             <div class="col-md-3 bg-info ms-5 p-4 rounded">
+//                 <h2>Deposit</h2>
+//                 <p class="fs-3">
+//                   rs   <span id="deposit">0</span>
+//                 </p>
+//             </div>
+
+
+//             <div class="col-md-3 bg-success ms-5 p-4 rounded">
+//                 <h2>Withdraw</h2>
+//                 <p class="fs-3">
+//                     rs <span id="withdraw">0</span>
+//                 </p>
+//             </div>
+//             <div class="col-md-3 bg-primary ms-5 p-4 rounded">
+//                 <h2>Balance</h2>
+//                 <p class="fs-3">
+//                     rs <span id="balance">0</span>
+//                 </p>
+//             </div> 
+//         </div>
+
+//         <div id="input-section" class="mt-5 d-flex justify-content-center">
+//             <div class="col-md-5 container rounded shadow p-4">
+//                 <h3>Deposit</h3>
+//                 <input type="number" class="form-control" id="deposit-input" placeholder="Deposit">
+//                 <br>
+//                 <button class="btn btn-success" id="deposit-btn">Deposit</button>
+//             </div>
+
+            
+//             <div class="col-md-5 container rounded shadow p-4">
+//                 <h3>Withdraw</h3>
+//                 <input type="number" class="form-control" id="withdraw-input" placeholder="Withdraw">
+//                 <br>
+//                 <button class="btn btn-success" id="withdraw-btn">Withdraw</button>
+//             </div>
+//         </div>
+//     </div>
+
+const   dashboard = document.getElementById('dashboard'),
+withdraw = document.getElementById('withdraw'),
+balance = document.getElementById('balance'),
+depositInput = document.getElementById('deposit-input'),
+withdrawInput = document.getElementById('withdraw-input'),
+depositBtn = document.getElementById('deposit-btn'),
+withdrawBtn = document.getElementById('withdraw-btn');
+
+
+
+depositBtn.addEventListener('click', () => {
+const value = depositInput.value;
+const depositValue = Number(deposit.innerText) + Number(value);
+const balanceValue = Number(balance.innerText) + Number(value);
+deposit.innerText = depositValue;
+balance.innerText = balanceValue;
+depositInput.value = '';
+})
+
+
+withdrawBtn.addEventListener('click', () => {
+const value = withdrawInput.value;
+if (Number(value) === 0) {
+    alert("You don't have any balance to withdraw");
+} else if (Number(value) > Number(balance.innerText)) {
+    alert("You don't have that much balance to withdraw");
+} else {
+    const balanceValue = Number(balance.innerText) - Number(value);
+    const withdrawValue = Number(withdraw.innerText) + Number(value);
+    withdraw.innerText = withdrawValue;
+    balance.innerText = balanceValue;
+    withdrawInput.value = '';
+}
+})
